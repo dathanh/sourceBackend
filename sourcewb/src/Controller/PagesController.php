@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -12,12 +13,15 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace App\Controller;
 
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\Controller\Controller;
+use Cake\ORM\Entity;
 
 /**
  * Static content controller
@@ -26,8 +30,7 @@ use Cake\View\Exception\MissingTemplateException;
  *
  * @link https://book.cakephp.org/3.0/en/controllers/pages-controller.html
  */
-class PagesController extends AppController
-{
+class PagesController extends BackendsController {
 
     /**
      * Displays a view
@@ -38,8 +41,7 @@ class PagesController extends AppController
      * @throws \Cake\Http\Exception\NotFoundException When the view file could not
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
-    public function display(...$path)
-    {
+    public function display(...$path) {
         $count = count($path);
         if (!$count) {
             return $this->redirect('/');
@@ -66,4 +68,9 @@ class PagesController extends AppController
             throw new NotFoundException();
         }
     }
+
+    protected function _prepareObject(Entity $object) {
+        ;
+    }
+
 }
