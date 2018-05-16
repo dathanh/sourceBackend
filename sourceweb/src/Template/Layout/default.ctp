@@ -5,7 +5,7 @@
         <?= $this->Html->meta(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0']) ?>
         <title>Amin | Basic Form</title>
         <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
-        <?= $this->Html->css(['bootstrap.min', '/font-awesome/css/font-awesome', 'plugins/iCheck/custom', 'animate', 'style', 'plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox']) ?>
+        <?= $this->Html->css(['/css/bootstrap.min', '/font-awesome/css/font-awesome', '/css/plugins/iCheck/custom', '/css/animate', '/css/style', '/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox']) ?>
     </head>
 
     <body>
@@ -64,13 +64,13 @@
 
         <!-- Mainly scripts -->
 
-        <?= $this->Html->script('jquery-3.1.1.min.js') ?>
-        <?= $this->Html->script('bootstrap.min.js') ?>
-        <?= $this->Html->script('plugins/metisMenu/jquery.metisMenu.js') ?>
-        <?= $this->Html->script('plugins/slimscroll/jquery.slimscroll.min.js') ?>
-        <?= $this->Html->script('inspinia.js') ?>
-        <?= $this->Html->script('plugins/pace/pace.min.js') ?>
-        <?= $this->Html->script('plugins/iCheck/icheck.min.js') ?>
+        <?= $this->Html->script('/js/jquery-3.1.1.min.js') ?>
+        <?= $this->Html->script('/js/bootstrap.min.js') ?>
+        <?= $this->Html->script('/js/plugins/metisMenu/jquery.metisMenu.js') ?>
+        <?= $this->Html->script('/js/plugins/slimscroll/jquery.slimscroll.min.js') ?>
+        <?= $this->Html->script('/js/inspinia.js') ?>
+        <?= $this->Html->script('/js/plugins/pace/pace.min.js') ?>
+        <?= $this->Html->script('/js/plugins/iCheck/icheck.min.js') ?>
         <script>
             $(document).ready(function () {
                 $('.i-checks').iCheck({
