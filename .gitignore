@@ -1,0 +1,9 @@
+Thumbs.db
+/sourceweb/nbproject/*
+/.idea/*
+/sourceweb/webroot/uploads/*
+/sourceweb/webroot/tmp/*
+/sourceweb/tmp/*
+/sourceweb/vendor/*
+/sourceweb/logs/*
+/sourceweb/composer.lock
