@@ -12,6 +12,11 @@ use App\Utility\Utils;
 
 abstract class BackendController extends Controller {
 
+    protected $toggleField;
+    protected $multiLanguageField;
+    protected $singlePhoto;
+    
+    
     public static $_globalObjects = [
         'components' => [],
         'tables' => []
@@ -43,7 +48,7 @@ abstract class BackendController extends Controller {
         $this->set('breadcrumb', $breadrumb);
     }
 
-    public function createBreadcrumb() {
+    protected function createBreadcrumb() {
         $controler = $this->request->getParam(['controller']);
         $action = $this->request->getParam(['action']);
         if (($controler == 'AdminDashboard') && ($action == 'index')) {
@@ -164,6 +169,14 @@ abstract class BackendController extends Controller {
             ]
         ];
         return $buttonTop;
+    }
+
+    public function index() {
+        $this->render('/Element/Backend/list_view');
+    }
+
+    public function add() {
+        
     }
 
 }

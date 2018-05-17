@@ -15,9 +15,6 @@ class AdminDashboard1Controller extends BackendController {
      *
      * @return \Cake\Network\Response|null
      */
-    public function index() {
-        
-    }
 
     public function edit() {
         

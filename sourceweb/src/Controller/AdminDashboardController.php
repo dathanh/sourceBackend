@@ -16,9 +16,6 @@ class AdminDashboardController extends BackendController {
      *
      * @return \Cake\Network\Response|null
      */
-    public function index() {
-        $this->_buttonTopCustom();
-    }
 
     protected function _buttonTopCustom() {
         $button = parent::_buttonTopCustom();
