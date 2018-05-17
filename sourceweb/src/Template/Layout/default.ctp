@@ -33,13 +33,13 @@
 
                     </nav>
                 </div>
-
+                <?= $this->element('breadcrumb') ?>
                 <div class="wrapper wrapper-content animated fadeInRight">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <h5>All form elements <small>With custom checbox and radion elements.</small></h5>
+                                    <?= $this->element('button_top') ?>
 
                                 </div>
                                 <div class="ibox-content">
