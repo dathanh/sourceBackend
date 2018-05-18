@@ -10,22 +10,53 @@ use App\Controller\BackendController;
  */
 class AdminDashboard1Controller extends BackendController {
 
+    protected $toggleFields = ['feature', 'wfqwf'];
+    protected $singlePhotos = [
+        'thumbnail' => [
+            'label' => 'thumbnail',
+            'type' => 'upload',
+            'isRequire' => true,
+            'width' => 400,
+            'height' => 400,
+        ],
+        'banner' => [
+            'label' => 'banner',
+            'type' => 'upload',
+            'isRequire' => true,
+            'width' => 400,
+            'height' => 400,
+        ],
+    ];
+
     /**
      * Index method
      *
      * @return \Cake\Network\Response|null
      */
-
-    public function edit() {
-        
-    }
-
-    public function view() {
-        
-    }
-
-    public function add() {
-        
+    protected function prepareObject() {
+        $inputField = [
+            'title' => [
+                'label' => 'title fqwfqf',
+                'type' => 'text',
+                'value' => '',
+                'validation' => ''
+            ],
+            'content' => [
+                'label' => 'content efwef',
+                'type' => 'textarea',
+                'value' => '',
+                'validation' => ''
+            ],
+            'age' => [
+                'label' => 'age',
+                'type' => 'dropdown',
+                'options' => ['1', '2', 'a', 'b'],
+                'value' => '',
+                'validation' => ''
+            ],
+        ];
+        return $inputField;
+        ;
     }
 
 }

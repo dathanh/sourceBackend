@@ -1,7 +1,7 @@
 		
 
 <?php if (empty($objectList)) : ?>
-<p class="text-warning description-block"> <strong><?php echo __('Empty Data'); ?></strong></p>
+<p class="text-warning text-center description-block"> <strong><?php echo __('Empty Data'); ?></strong></p>
 <?php else: ?>
     <table id="tableList" class="table table-bordered table-striped wordWrap">
         <thead>

@@ -12,11 +12,10 @@ use App\Utility\Utils;
 
 abstract class BackendController extends Controller {
 
-    protected $toggleField;
-    protected $multiLanguageField;
-    protected $singlePhoto;
-    
-    
+    protected $toggleFields = [];
+    protected $multiLanguageFields;
+    protected $singlePhotos;
+    protected $activationFields;
     public static $_globalObjects = [
         'components' => [],
         'tables' => []
@@ -93,6 +92,9 @@ abstract class BackendController extends Controller {
             case 'add':
                 $this->set('buttonTop', $buttonTop['add']);
                 break;
+            default :
+                $this->set('buttonTop', '');
+                break;
         }
     }
 
@@ -103,7 +105,7 @@ abstract class BackendController extends Controller {
                 [
                     'name' => Inflector::humanize(Inflector::underscore("Add $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'add']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'plus',
                     'color' => 'success',
                 ],
             ],
@@ -111,7 +113,7 @@ abstract class BackendController extends Controller {
                 [
                     'name' => Inflector::humanize(Inflector::underscore("List $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'index']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'list',
                     'color' => 'primary',
                 ],
             ],
@@ -119,25 +121,25 @@ abstract class BackendController extends Controller {
                 [
                     'name' => Inflector::humanize(Inflector::underscore("List $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'index']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'list',
                     'color' => 'primary',
                 ],
                 [
                     'name' => Inflector::humanize(Inflector::underscore("Add $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'add']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'plus',
                     'color' => 'success',
                 ],
                 [
                     'name' => Inflector::humanize(Inflector::underscore("View $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'view']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'eye',
                     'color' => 'warning',
                 ],
                 [
                     'name' => Inflector::humanize(Inflector::underscore("Delete $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'delete']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'trash',
                     'color' => 'danger',
                 ],
             ],
@@ -145,25 +147,25 @@ abstract class BackendController extends Controller {
                 [
                     'name' => Inflector::humanize(Inflector::underscore("List $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'index']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'list',
                     'color' => 'primary',
                 ],
                 [
                     'name' => Inflector::humanize(Inflector::underscore("Add $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'add']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'plus',
                     'color' => 'success',
                 ],
                 [
                     'name' => Inflector::humanize(Inflector::underscore("View $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'view']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'eye',
                     'color' => 'warning',
                 ],
                 [
                     'name' => Inflector::humanize(Inflector::underscore("Delete $controller")),
                     'url' => Router::url(['controller' => $controller, 'action' => 'delete']),
-                    'icon' => 'pencil-square-o',
+                    'icon' => 'trash',
                     'color' => 'danger',
                 ],
             ]
@@ -176,7 +178,65 @@ abstract class BackendController extends Controller {
     }
 
     public function add() {
+//        $submitData = $this->prepareSubmitData($this->request->getData());
+//        $this->createUpdate($submitData);
+        $this->showUpdateField();
+        $this->render('/Element/Backend/create_update_view');
+    }
+
+    public function edit() {
+//        $this->prepareSubmitData();
+//        $this->createUpdate($submitData);
+            debug($this->request->getData());
+            die;
+        $this->showUpdateField();
+        $this->render('/Element/Backend/create_update_view');
+    }
+
+    protected function prepareSubmitData($submitData) {
         
     }
 
+    protected function createUpdate($submitData) {
+        
+    }
+
+    protected function showUpdateField() {
+        $inputField = $this->prepareObject();
+
+        if (!empty($this->toggleFields)) {
+            $toggleFields = $this->toggleFields;
+            if (is_array($toggleFields)) {
+                foreach ($toggleFields as $key => $fieldInput) {
+                    $toggleFields[$fieldInput] = [
+                        'label' => ucfirst($fieldInput),
+                        'type' => 'toggle',
+                        'value' => '',
+                    ];
+                    unset($toggleFields[$key]);
+                }
+                $inputField = array_merge($inputField, $toggleFields);
+            } else {
+                $inputField[$toggleFields] = [
+                    'label' => ucfirst($toggleFields),
+                    'type' => 'toggle',
+                    'value' => '',
+                ];
+            }
+            $inputField = array_merge($inputField, $toggleFields);
+        }
+        if (!empty($this->singlePhotos)) {
+            $singlePhotos = $this->singlePhotos;
+            foreach ($singlePhotos as $key => $fieldInput) {
+                $fieldInput['type'] = 'upload';
+            }
+
+            $inputField = array_merge($inputField, $singlePhotos);
+        }
+
+        $activationField = $this->activationField;
+        $this->set('inpuField', $inputField);
+    }
+
+    protected abstract function prepareObject();
 }

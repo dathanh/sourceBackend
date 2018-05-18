@@ -28,4 +28,8 @@ class AdminDashboardController extends BackendController {
         return $button;
     }
 
+    protected function prepareObject() {
+        
+    }
+
 }

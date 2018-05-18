@@ -4,8 +4,18 @@
         <?= $this->Html->meta(['charset' => 'utf-8']) ?>
         <?= $this->Html->meta(['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0']) ?>
         <title>Amin | Basic Form</title>
-        <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
         <?= $this->Html->css(['/css/bootstrap.min', '/font-awesome/css/font-awesome', '/css/plugins/iCheck/custom', '/css/animate', '/css/style', '/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox']) ?>
+        <?= $this->Html->css('/css/plugins/jasny/jasny-bootstrap.min.css') ?>
+        <?= $this->Html->css('/css/plugins/switchery/switchery.css') ?>
+        <?= $this->Html->css('/css/plugins/chosen/bootstrap-chosen.css') ?>
+        <?= $this->Html->css('/css/plugins/colorpicker/bootstrap-colorpicker.min.css'); ?>
+        <?= $this->Html->css('/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css'); ?>
+        <?= $this->Html->css('/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css'); ?>
+        <?= $this->Html->css('/css/plugins/datapicker/datepicker3.css'); ?>
+        <?= $this->Html->css('/css/plugins/datetimepicker/bootstrap-datetimepicker.css'); ?>
+        <?= $this->Html->css('/css/plugins/summernote/summernote.css'); ?>
+        <?= $this->Html->css('/css/plugins/summernote/summernote-bs3.css'); ?>
     </head>
 
     <body>
@@ -71,13 +81,46 @@
         <?= $this->Html->script('/js/inspinia.js') ?>
         <?= $this->Html->script('/js/plugins/pace/pace.min.js') ?>
         <?= $this->Html->script('/js/plugins/iCheck/icheck.min.js') ?>
+        <?= $this->Html->script('/js/plugins/jasny/jasny-bootstrap.min.js') ?>
+        <?= $this->Html->script('/js/plugins/switchery/switchery.js') ?>
+        <?= $this->Html->script('/js/plugins/chosen/chosen.jquery.js') ?>
+        <?= $this->Html->script('/js/plugins/colorpicker/bootstrap-colorpicker.min.js'); ?>
+        <?= $this->Html->script('/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js'); ?>
+        <?= $this->Html->script('/js/plugins/datapicker/bootstrap-datepicker.js'); ?>
+        <?= $this->Html->script('/js/plugins/summernote/summernote.min.js'); ?>
+        <?= $this->Html->script('/js/plugins/datetimepicker/bootstrap-datetimepicker.js'); ?>
         <script>
             $(document).ready(function () {
                 $('.i-checks').iCheck({
                     checkboxClass: 'icheckbox_square-green',
                     radioClass: 'iradio_square-green',
                 });
+
+
+                var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+                elems.forEach(function (html) {
+                    var switchery = new Switchery(html, {color: '#1AB394'});
+                });
+
+
+                $('.tagsinput').tagsinput({
+                    tagClass: 'label label-primary'
+                });
+                $('.summernote').summernote();
+
             });
+            $('.chosen-select').chosen({width: "100%"});
+            $('.my-colorpicker2').colorpicker();
+            $('.timepicker').datetimepicker({
+                format: 'dd/mm/yyyy hh:ii:ss',
+                showSecond: true,
+                timeFormat: 'hh:mm:ss'
+            });
+            $(".datepicker").datepicker({
+                format: 'dd/mm/yyyy',
+            });
+
         </script>
     </body>
 

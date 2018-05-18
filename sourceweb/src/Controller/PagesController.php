@@ -66,4 +66,7 @@ class PagesController extends BackendController
             throw new NotFoundException();
         }
     }
+    protected function prepareObject() {
+        ;
+    }
 }
